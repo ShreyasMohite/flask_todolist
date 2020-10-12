@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='/css/main.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {%if title%}
+    <title>{{title}}</title>
+    {%else%}
+    <title>Home</title>
+    {%endif%}
+</head>
+
+<body>
+    <div class="headings">
+        <h1>Todo List</h1>
+    </div>
+    <div class="check">
+        <form action="/" method="POST">
+            <input type="text" name="getname" id="" placeholder="please enter tasks">
+            <button type="submit" class="btn btn-primary">Done</button>
+        </form>
+    </div>
+
+    {%block content%} {%for user in user%}
+    <div class="checklist">
+        <div class="card">
+            <input type="checkbox" name="" id=""><span>{{user.name}}</span>
+            <a href="{{url_for('delete',id=user.id)}}">
+                <button class="cur ">&times;</button>
+            </a>
+        </div>
+    </div>
+
+    {%endfor%} {%endblock%}
+
+</body>
+
+</html>
